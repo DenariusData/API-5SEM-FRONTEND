@@ -9,6 +9,8 @@ RUN pnpm install --frozen-lockfile
 
 COPY . .
 
+ENV HOST=0.0.0.0
+
 EXPOSE 3000
 
-CMD ["pnpm", "dev", "--host", "0.0.0.0"]
+CMD ["pnpm", "dev"]
