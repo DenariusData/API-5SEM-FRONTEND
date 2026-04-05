@@ -72,8 +72,8 @@ function groupBy(items: { sk_projeto: string }[] | null, field: string) {
   return { labels, data }
 }
 
-const horasPorProjeto = computed(() => groupBy(execucoes.value, 'horas_trabalhadas'))
-const comprasPorProjeto = computed(() => groupBy(compras.value, 'valor_alocado_projeto'))
+const horasPorProjeto = computed(() => groupBy(execucoes.value ?? null, 'horas_trabalhadas'))
+const comprasPorProjeto = computed(() => groupBy(compras.value ?? null, 'valor_alocado_projeto'))
 </script>
 
 <template>
