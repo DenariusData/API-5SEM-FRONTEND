@@ -9,7 +9,7 @@ const { data: materiais, status } = await useApi<MateriaisPorProjeto[]>('/api/pr
 
 const loading = computed(() => status.value === 'pending')
 
-const totalProjetos = computed(() => new Set(materiais.value?.map((m) => m.codigo_projeto)).size)
+const totalProjetos = computed(() => new Set(materiais.value?.map(m => m.codigo_projeto)).size)
 
 const mediaPorMaterial = computed(() => {
   if (!materiais.value?.length) return 0
