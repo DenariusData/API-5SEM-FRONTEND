@@ -9,10 +9,10 @@ const projetoFiltro = ref('Todos')
 const pagina = ref(1)
 const porPagina = 5
 
-const projetos = computed(() => ['Todos', ...new Set(props.materiais.map((m) => m.codigo_projeto))])
+const projetos = computed(() => ['Todos', ...new Set(props.materiais.map(m => m.nome_projeto))])
 
 const materiaisFiltrados = computed(() => {
-  return props.materiais.filter((m) => projetoFiltro.value === 'Todos' || m.codigo_projeto === projetoFiltro.value)
+  return props.materiais.filter(m => projetoFiltro.value === 'Todos' || m.nome_projeto === projetoFiltro.value)
 })
 
 const materiaisPaginados = computed(() => {
@@ -25,6 +25,12 @@ const totalPaginas = computed(() => Math.ceil(materiaisFiltrados.value.length / 
 watch(projetoFiltro, () => {
   pagina.value = 1
 })
+
+function estoqueColor(qtd: number) {
+  if (qtd === 0) return 'error'
+  if (qtd < 10) return 'warning'
+  return 'success'
+}
 
 const columns = [
   { accessorKey: 'nome_projeto', header: 'Projeto' },
@@ -51,7 +57,7 @@ const columns = [
           v-model="projetoFiltro"
           :items="projetos"
           placeholder="Projeto"
-          class="w-36"
+          class="w-44"
         />
       </div>
     </template>
@@ -59,7 +65,16 @@ const columns = [
     <UTable
       :data="materiaisPaginados"
       :columns="columns"
-    />
+    >
+      <template #quantidade_estoque-cell="{ row }">
+        <UBadge
+          :color="estoqueColor(row.original.quantidade_estoque)"
+          variant="subtle"
+        >
+          {{ row.original.quantidade_estoque }}
+        </UBadge>
+      </template>
+    </UTable>
 
     <div class="mt-4 flex items-center justify-between text-sm text-gray-500">
       <span>{{ materiaisFiltrados.length }} materiais</span>
