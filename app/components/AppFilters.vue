@@ -57,14 +57,12 @@ const activeCount = computed(() =>
     </template>
 
     <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-      <div
+      <UFormField
         v-for="f in fields"
         :key="f.key"
-        class="flex flex-col gap-1.5"
+        :label="f.label"
+        :name="f.key"
       >
-        <label class="text-sm font-medium">
-          {{ f.label }}
-        </label>
         <USelect
           :model-value="modelValue[f.key]"
           :items="f.options"
@@ -72,7 +70,7 @@ const activeCount = computed(() =>
           class="w-full"
           @update:model-value="(v: string) => update(f.key, v)"
         />
-      </div>
+      </UFormField>
     </div>
   </UCard>
 
@@ -93,14 +91,12 @@ const activeCount = computed(() =>
 
     <template #body>
       <div class="flex flex-col gap-4 pb-4">
-        <div
+        <UFormField
           v-for="f in fields"
           :key="f.key"
-          class="flex flex-col gap-1.5"
+          :label="f.label"
+          :name="f.key"
         >
-          <label class="text-sm font-medium">
-            {{ f.label }}
-          </label>
           <USelect
             :model-value="modelValue[f.key]"
             :items="f.options"
@@ -108,7 +104,7 @@ const activeCount = computed(() =>
             class="w-full"
             @update:model-value="(v: string) => update(f.key, v)"
           />
-        </div>
+        </UFormField>
 
         <UButton
           v-if="activeCount > 0"
