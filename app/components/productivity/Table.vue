@@ -9,10 +9,10 @@ const responsavelFiltro = ref('Todos')
 const pagina = ref(1)
 const porPagina = 5
 
-const responsaveis = computed(() => ['Todos', ...new Set(props.execucoes.map((e) => e.sk_responsavel))])
+const responsaveis = computed(() => ['Todos', ...new Set(props.execucoes.map(e => e.sk_responsavel))])
 
 const execucoesFiltradas = computed(() => {
-  return props.execucoes.filter((e) => responsavelFiltro.value === 'Todos' || e.sk_responsavel === responsavelFiltro.value)
+  return props.execucoes.filter(e => responsavelFiltro.value === 'Todos' || e.sk_responsavel === responsavelFiltro.value)
 })
 
 const execucoesPaginadas = computed(() => {
@@ -68,7 +68,12 @@ const columns = [
         {{ formatDate(row.original.sk_tempo) }}
       </template>
       <template #horas_trabalhadas-cell="{ row }">
-        {{ Number(row.original.horas_trabalhadas).toFixed(1) }}h
+        <UBadge
+          color="neutral"
+          variant="subtle"
+        >
+          {{ Number(row.original.horas_trabalhadas).toFixed(1) }}h
+        </UBadge>
       </template>
     </UTable>
 
