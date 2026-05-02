@@ -12,19 +12,21 @@ const { textColor, gridColor } = useChartColors()
 const agrupado = computed(() => {
   const map = new Map<string, number>()
   for (const e of props.execucoes) {
-    map.set(e.sk_responsavel, (map.get(e.sk_responsavel) ?? 0) + Number(e.horas_trabalhadas))
+    const total = (map.get(e.sk_responsavel) ?? 0) + Number(e.horas_trabalhadas)
+    map.set(e.sk_responsavel, total)
   }
   return [...map.entries()]
     .sort((a, b) => b[1] - a[1])
     .slice(0, 10)
+    .map(([nome, total]) => ({ nome, total: Number(total.toFixed(1)) }))
 })
 
 const chartData = computed(() => ({
-  labels: agrupado.value.map(([nome]) => nome),
+  labels: agrupado.value.map(({ nome }) => nome),
   datasets: [
     {
       label: 'Horas trabalhadas',
-      data: agrupado.value.map(([, horas]) => Number(horas.toFixed(1))),
+      data: agrupado.value.map(({ total }) => total),
       backgroundColor: '#EA3837',
       borderRadius: 6
     }
@@ -41,6 +43,11 @@ const options = computed(() => ({
         color: textColor.value,
         usePointStyle: true,
         pointStyle: 'circle'
+      }
+    },
+    tooltip: {
+      callbacks: {
+        label: (ctx: { raw: unknown }) => `${ctx.raw}h`
       }
     }
   },
