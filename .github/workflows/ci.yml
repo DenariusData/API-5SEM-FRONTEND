@@ -6,6 +6,10 @@ on:
   pull_request:
     branches: [main, develop]
 
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
 env:
   CI: true
   NODE_ENV: test
@@ -16,11 +20,11 @@ jobs:
     name: Lint (ESLint)
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@de0fac2c71898c5dcc9a806f3e42d26a2f7d6b38 # v6.0.2
       - name: Install pnpm
         uses: pnpm/action-setup@v4
       - name: Set up Node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
         with:
           node-version-file: '.nvmrc'
           cache: 'pnpm'
@@ -32,13 +36,12 @@ jobs:
   typecheck:
     name: TypeScript type-check
     runs-on: ubuntu-latest
-    needs: lint
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@de0fac2c71898c5dcc9a806f3e42d26a2f7d6b38 # v6.0.2
       - name: Install pnpm
         uses: pnpm/action-setup@v4
       - name: Set up Node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
         with:
           node-version-file: '.nvmrc'
           cache: 'pnpm'
@@ -52,15 +55,14 @@ jobs:
   test:
     name: Tests + Coverage (Vitest)
     runs-on: ubuntu-latest
-    needs: lint
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@de0fac2c71898c5dcc9a806f3e42d26a2f7d6b38 # v6.0.2
         with:
           fetch-depth: 0
       - name: Install pnpm
         uses: pnpm/action-setup@v4
       - name: Set up Node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
         with:
           node-version-file: '.nvmrc'
           cache: 'pnpm'
@@ -71,13 +73,13 @@ jobs:
       - name: Run tests with coverage
         run: pnpm vitest run --coverage
       - name: Upload coverage report
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@4cec3d8aa04e39d1a68397de0c4cd6fb9dce8ec1 # v4.6.1
         with:
           name: coverage-report-frontend
           path: coverage/
           retention-days: 7
       - name: SonarCloud Scan
-        uses: SonarSource/sonarcloud-github-action@master
+        uses: SonarSource/sonarcloud-github-action@v5
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
@@ -85,13 +87,13 @@ jobs:
   build:
     name: Build (Nuxt)
     runs-on: ubuntu-latest
-    needs: [typecheck, test]
+    needs: [lint, typecheck, test]
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@de0fac2c71898c5dcc9a806f3e42d26a2f7d6b38 # v6.0.2
       - name: Install pnpm
         uses: pnpm/action-setup@v4
       - name: Set up Node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
         with:
           node-version-file: '.nvmrc'
           cache: 'pnpm'
