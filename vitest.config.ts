@@ -16,8 +16,8 @@ export default defineConfig({
         'app/**/*.spec.ts',
         '.nuxt/**',
         '.output/**',
-        'node_modules/**',
-      ],
-    },
-  },
+        'node_modules/**'
+      ]
+    }
+  }
 })
