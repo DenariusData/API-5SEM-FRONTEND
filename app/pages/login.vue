@@ -28,11 +28,9 @@ async function login() {
     }
 
     await navigateTo('/')
-  }
-  catch {
+  } catch {
     erro.value = 'Erro ao conectar ao servidor.'
-  }
-  finally {
+  } finally {
     carregando.value = false
   }
 }
@@ -109,7 +107,7 @@ async function login() {
 
           <UButton
             size="lg"
-            class="w-full"
+            class="w-full justify-center"
             :loading="carregando"
             :disabled="!formularioValido || carregando"
             @click="login"
