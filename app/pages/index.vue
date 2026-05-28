@@ -112,12 +112,12 @@ const projetosFiltrados = computed(() => {
     (
       filtros.value.programa === 'Todos'
       || p.nome_programa
-        === filtros.value.programa
+      === filtros.value.programa
     )
     && (
       filtros.value.status === 'Todos'
       || p.status
-        === filtros.value.status
+      === filtros.value.status
     )
     && (
       !pesquisa.value
@@ -293,7 +293,6 @@ const comprasPorProjeto = computed(() =>
     </template>
 
     <template #body>
-
       <!-- Pesquisa -->
       <div class="mb-4">
         <div class="w-full max-w-sm">

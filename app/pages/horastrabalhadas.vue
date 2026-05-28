@@ -22,7 +22,6 @@ const {
 )
 
 const {
-  data: tempoGasto,
   status: tempoGastoStatus
 } = useApi<TempoGasto>(
   '/api/dim/tempo-gasto'
@@ -64,8 +63,8 @@ const mediaPorExecucao = computed(() => {
     return 0
   }
 
-  const total =
-    execucoesFiltradas.value.reduce(
+  const total
+    = execucoesFiltradas.value.reduce(
       (acc, e) =>
         acc + Number(e.horas_trabalhadas),
       0
@@ -102,7 +101,7 @@ const stats = computed(() => [
   <UDashboardPanel>
     <template #header>
       <UDashboardNavbar
-        title="Produtividade"
+        title="Horas Trabalhadas"
         icon="i-lucide-activity"
       >
         <template #right>
@@ -113,17 +112,17 @@ const stats = computed(() => [
 
     <template #body>
       <div class="relative z-50">
-
         <!-- Barra de Pesquisa -->
         <div class="mb-6">
           <div
             class="w-full max-w-sm"
           >
-            <input
+            <UInput
               v-model="pesquisa"
               type="text"
               placeholder="Pesquisar responsável..."
-              class="w-full rounded-lg border border-gray-700 bg-gray-900 px-4 py-2 text-white outline-none focus:border-primary"
+              icon="i-lucide-search"
+              size="lg"
             />
           </div>
         </div>
@@ -192,7 +191,6 @@ const stats = computed(() => [
           v-else
           class="space-y-6"
         >
-
           <!-- Cards -->
           <div
             class="grid grid-cols-1 gap-4 sm:grid-cols-2"
@@ -251,10 +249,11 @@ const stats = computed(() => [
                 class="space-y-2"
               >
                 <div
-                  v-for="execucao in execucoesFiltradas.slice(0, 10)"
-                  :key="execucao.sk_execucao"
+                  v-for="(execucao, index) in execucoesFiltradas.slice(0, 10)"
+                  :key="index"
                   class="rounded-lg border border-gray-800 p-3"
                 >
+                  >
                   <div class="font-medium">
                     {{ execucao.sk_responsavel }}
                   </div>

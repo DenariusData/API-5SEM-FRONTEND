@@ -49,8 +49,8 @@ const mediaPorMaterial = computed(() => {
     return 0
   }
 
-  const total =
-    materiaisFiltrados.value.reduce(
+  const total
+    = materiaisFiltrados.value.reduce(
       (acc, m) =>
         acc + m.quantidade_estoque,
       0
@@ -116,17 +116,17 @@ const stats = computed(() => [
 
     <template #body>
       <div class="relative z-50">
-
         <!-- Barra de Pesquisa -->
         <div class="mb-6">
           <div
             class="w-full max-w-sm"
           >
-            <input
+            <UInput
               v-model="pesquisa"
               type="text"
               placeholder="Pesquisar material..."
-              class="w-full rounded-lg border border-gray-700 bg-gray-900 px-4 py-2 text-white outline-none focus:border-primary"
+              icon="i-lucide-search"
+              size="lg"
             />
           </div>
         </div>
@@ -195,7 +195,6 @@ const stats = computed(() => [
           v-else
           class="space-y-6"
         >
-
           <!-- Cards -->
           <div
             class="grid grid-cols-1 gap-4 sm:grid-cols-3"

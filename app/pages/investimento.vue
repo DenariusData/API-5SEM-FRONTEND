@@ -67,8 +67,8 @@ const projetosFiltrados = computed(() => {
 })
 
 const projetosPorPrograma = computed(() => {
-  const listaProjetos =
-    pesquisa.value
+  const listaProjetos
+    = pesquisa.value
       ? projetosFiltrados.value
       : projetos.value
 
@@ -82,9 +82,9 @@ const projetosPorPrograma = computed(() => {
   >()
 
   for (const p of listaProjetos) {
-    const lista =
-      map.get(p.codigo_programa)
-      ?? []
+    const lista
+      = map.get(p.codigo_programa)
+        ?? []
 
     lista.push(p)
 
@@ -112,17 +112,17 @@ const projetosPorPrograma = computed(() => {
     </template>
 
     <template #body>
-
       <!-- Barra de Pesquisa -->
       <div class="mb-6">
         <div
           class="relative z-50 w-full max-w-sm"
         >
-          <input
+          <UInput
             v-model="pesquisa"
             type="text"
             placeholder="Pesquisar projeto..."
-            class="w-full rounded-lg border border-gray-700 bg-gray-900 px-4 py-2 text-white outline-none focus:border-primary"
+            icon="i-lucide-search"
+            size="lg"
           />
         </div>
       </div>
