@@ -19,7 +19,7 @@ function getMediaPorExecucao(execucoes: FatoExecucao[]) {
 const mockExecucoes: FatoExecucao[] = [
   { sk_fato: '1', sk_projeto: 'P1', sk_tarefa: 'T1', sk_responsavel: 'Ana', sk_tempo: '2025-01-01', horas_trabalhadas: '10' },
   { sk_fato: '2', sk_projeto: 'P1', sk_tarefa: 'T2', sk_responsavel: 'Ana', sk_tempo: '2025-01-02', horas_trabalhadas: '10' },
-  { sk_fato: '3', sk_projeto: 'P2', sk_tarefa: 'T3', sk_responsavel: 'Bruno', sk_tempo: '2025-01-01', horas_trabalhadas: '6' },
+  { sk_fato: '3', sk_projeto: 'P2', sk_tarefa: 'T3', sk_responsavel: 'Bruno', sk_tempo: '2025-01-01', horas_trabalhadas: '6' }
 ]
 
 describe('PageProdutividade', () => {

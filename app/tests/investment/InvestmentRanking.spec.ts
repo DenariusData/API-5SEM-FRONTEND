@@ -25,7 +25,7 @@ const mockProgramas: ProgramaInvestimento[] = [
   { codigo_programa: 'P1', nome_programa: 'Programa Alpha', investimento_total: '500000' },
   { codigo_programa: 'P2', nome_programa: 'Programa Beta', investimento_total: '300000' },
   { codigo_programa: 'P3', nome_programa: 'Programa Gamma', investimento_total: '800000' },
-  { codigo_programa: 'P4', nome_programa: 'Programa Delta', investimento_total: '100000' },
+  { codigo_programa: 'P4', nome_programa: 'Programa Delta', investimento_total: '100000' }
 ]
 
 describe('InvestmentRanking', () => {

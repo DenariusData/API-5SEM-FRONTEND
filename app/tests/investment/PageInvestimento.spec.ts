@@ -26,7 +26,7 @@ const mockProjetos: DimProjeto[] = [
     sk_projeto: '3', id_projeto: 'P03', nome_projeto: 'Projeto C', status: 'Planejamento',
     codigo_projeto: 'COD03', codigo_programa: 'PRG2', nome_programa: 'Programa Beta',
     gerente_programa: 'Daniel', responsavel: 'Eva', data_inicio: '2025-01-01', data_fim_prevista: '2026-01-01'
-  },
+  }
 ]
 
 describe('PageInvestimento', () => {

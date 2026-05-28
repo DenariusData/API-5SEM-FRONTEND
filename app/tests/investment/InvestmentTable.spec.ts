@@ -65,7 +65,7 @@ const mockProjetos: DimProjeto[] = [
     codigo_projeto: 'COD03', codigo_programa: 'PRG1', nome_programa: 'Programa Alpha',
     gerente_programa: 'Ana Silva', responsavel: 'Eva Torres',
     data_inicio: '2025-01-01', data_fim_prevista: '2026-01-01'
-  },
+  }
 ]
 
 describe('InvestmentTable', () => {
@@ -129,7 +129,7 @@ describe('InvestmentTable', () => {
     const execucoes: FatoExecucao[] = [
       { sk_fato: '1', sk_projeto: '1', sk_tarefa: 'T1', sk_responsavel: 'Ana', sk_tempo: '2024-01-01', horas_trabalhadas: '8' },
       { sk_fato: '2', sk_projeto: '1', sk_tarefa: 'T2', sk_responsavel: 'Bruno', sk_tempo: '2024-01-02', horas_trabalhadas: '4' },
-      { sk_fato: '3', sk_projeto: '2', sk_tarefa: 'T3', sk_responsavel: 'Carla', sk_tempo: '2024-01-01', horas_trabalhadas: '6' },
+      { sk_fato: '3', sk_projeto: '2', sk_tarefa: 'T3', sk_responsavel: 'Carla', sk_tempo: '2024-01-01', horas_trabalhadas: '6' }
     ]
 
     // Act
@@ -143,7 +143,7 @@ describe('InvestmentTable', () => {
     // Arrange
     const compras: FatoCompra[] = [
       { sk_fato: '1', sk_projeto: '1', valor_total_pedido: '1000', valor_alocado_projeto: '800' },
-      { sk_fato: '2', sk_projeto: '1', valor_total_pedido: '500', valor_alocado_projeto: '400' },
+      { sk_fato: '2', sk_projeto: '1', valor_total_pedido: '500', valor_alocado_projeto: '400' }
     ]
 
     // Act

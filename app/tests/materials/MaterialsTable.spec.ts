@@ -39,7 +39,7 @@ const mockMateriais: MateriaisPorProjeto[] = [
   { codigo_projeto: '1', nome_projeto: 'Projeto A', codigo_material: 'M01', descricao_material: 'Parafuso', quantidade_estoque: 100 },
   { codigo_projeto: '2', nome_projeto: 'Projeto B', codigo_material: 'M02', descricao_material: 'Porca', quantidade_estoque: 5 },
   { codigo_projeto: '3', nome_projeto: 'Projeto C', codigo_material: 'M03', descricao_material: 'Arruela', quantidade_estoque: 0 },
-  { codigo_projeto: '1', nome_projeto: 'Projeto A', codigo_material: 'M01', descricao_material: 'Parafuso', quantidade_estoque: 50 },
+  { codigo_projeto: '1', nome_projeto: 'Projeto A', codigo_material: 'M01', descricao_material: 'Parafuso', quantidade_estoque: 50 }
 ]
 
 describe('MaterialsTable', () => {
