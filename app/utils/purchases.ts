@@ -83,7 +83,10 @@ export function statusColor(status: string): UiColor {
     case 'Concluído':
     case 'Concluido':
     case 'Aprovado':
+    case 'Aprovada':
       return 'success'
+    case 'Enviado':
+    case 'Parcialmente Entregue':
     case 'Em andamento':
     case 'Em processamento':
       return 'info'
@@ -91,6 +94,9 @@ export function statusColor(status: string): UiColor {
     case 'Pendente':
       return 'warning'
     case 'Cancelado':
+    case 'Cancelada':
+    case 'Rejeitada':
+    case 'Rejeitado':
       return 'error'
     default:
       return 'neutral'

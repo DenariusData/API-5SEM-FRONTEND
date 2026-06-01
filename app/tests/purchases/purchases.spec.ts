@@ -147,13 +147,25 @@ describe('formatDuration', () => {
 })
 
 describe('statusColor', () => {
-  it('retorna success para status concluído/entregue', () => {
+  it('retorna success para entregue e aprovada', () => {
     expect(statusColor('Entregue')).toBe('success')
-    expect(statusColor('Concluído')).toBe('success')
+    expect(statusColor('Aprovada')).toBe('success')
   })
 
-  it('retorna error para cancelado', () => {
+  it('retorna error para cancelada/cancelado e rejeitada', () => {
+    expect(statusColor('Cancelada')).toBe('error')
     expect(statusColor('Cancelado')).toBe('error')
+    expect(statusColor('Rejeitada')).toBe('error')
+  })
+
+  it('retorna warning para aberto e pendente', () => {
+    expect(statusColor('Aberto')).toBe('warning')
+    expect(statusColor('Pendente')).toBe('warning')
+  })
+
+  it('retorna info para enviado e parcialmente entregue', () => {
+    expect(statusColor('Enviado')).toBe('info')
+    expect(statusColor('Parcialmente Entregue')).toBe('info')
   })
 
   it('retorna neutral para status desconhecido', () => {
