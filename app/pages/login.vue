@@ -39,8 +39,8 @@ async function onSubmit(event: FormSubmitEvent<{ email: string, senha: string }>
 </script>
 
 <template>
-  <div class="flex min-h-screen items-center justify-center bg-muted p-4">
-    <UPageCard class="w-full max-w-md">
+  <div class="flex min-h-screen items-center justify-center overflow-hidden bg-default p-4">
+    <UPageCard class="relative z-10 w-full max-w-md bg-default/80 backdrop-blur-xl">
       <UAuthForm
         :fields="fields"
         title="Nexus Dashboard"
